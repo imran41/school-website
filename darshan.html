@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Darshan Public School – Darbhanga</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a1628;
+    --royal: #1a3a6b;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #fdf8f0;
+    --white: #ffffff;
+    --text: #2c2c2c;
+    --muted: #6b7280;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-top {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 5%;
+  }
+  .logo-wrap { display:flex; align-items:center; gap:14px; }
+  .logo-emblem {
+    width:52px; height:52px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',serif; font-size:22px; font-weight:700;
+    color: var(--navy); letter-spacing:-1px;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.25);
+  }
+  .logo-text h1 {
+    font-family:'Cinzel',serif; font-size:16px; font-weight:700;
+    color:var(--white); letter-spacing:0.5px; line-height:1.2;
+  }
+  .logo-text p {
+    font-size:10px; color:var(--gold); letter-spacing:2px; text-transform:uppercase;
+  }
+  nav { display:flex; gap:4px; align-items:center; }
+  .nav-btn {
+    background:none; border:none; cursor:pointer;
+    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
+    color:rgba(255,255,255,0.75); padding:8px 14px; border-radius:6px;
+    transition:all 0.25s; letter-spacing:0.3px;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    color:var(--gold); background:rgba(201,168,76,0.1);
+  }
+  .nav-cta {
+    background:var(--gold); color:var(--navy);
+    padding:8px 18px; border-radius:6px; font-weight:600;
+    border:none; cursor:pointer; font-family:'DM Sans',sans-serif;
+    font-size:13px; letter-spacing:0.3px; margin-left:8px;
+    transition:all 0.25s;
+  }
+  .nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+  /* ── PAGES ── */
+  .page { display:none; min-height:100vh; padding-top:80px; }
+  .page.active { display:block; }
+
+  /* ── HOME HERO ── */
+  .hero {
+    position:relative; min-height:100vh;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--royal) 60%, #0f2952 100%);
+    display:flex; align-items:center; overflow:hidden;
+  }
+  .hero-bg-pattern {
+    position:absolute; inset:0; opacity:0.04;
+    background-image:
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+  .hero-glow {
+    position:absolute; width:600px; height:600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    top:-100px; right:-100px; pointer-events:none;
+  }
+  .hero-content {
+    position:relative; z-index:2; padding:0 8%;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(201,168,76,0.15); border:1px solid var(--border);
+    border-radius:100px; padding:6px 16px; margin-bottom:28px;
+  }
+  .hero-badge span { font-size:11px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; }
+  .hero-badge .dot { width:6px;height:6px;border-radius:50%;background:var(--gold); }
+  .hero h2 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(42px,6vw,80px);
+    font-weight:700; color:var(--white); line-height:1.1;
+    margin-bottom:8px;
+  }
+  .hero h2 em { color:var(--gold); font-style:italic; }
+  .hero-sub {
+    font-family:'Cinzel',serif; font-size:clamp(12px,1.5vw,16px);
+    color:var(--gold); letter-spacing:3px; text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero p {
+    font-size:16px; color:rgba(255,255,255,0.7); max-width:520px;
+    line-height:1.8; margin-bottom:40px;
+  }
+  .hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--gold); color:var(--navy);
+    padding:14px 32px; border-radius:8px; font-weight:600;
+    font-size:14px; border:none; cursor:pointer;
+    font-family:'DM Sans',sans-serif; letter-spacing:0.5px;
+    transition:all 0.3s; box-shadow:0 4px 20px rgba(201,168,76,0.3);
+  }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.4); }
+  .btn-outline {
+    background:transparent; color:var(--white);
+    padding:14px 32px; border-radius:8px; font-weight:500;
+    font-size:14px; border:1px solid rgba(255,255,255,0.3); cursor:pointer;
+    font-family:'DM Sans',sans-serif; letter-spacing:0.5px; transition:all 0.3s;
+  }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+  .hero-stats {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--border); border:1px solid var(--border);
+    border-radius:16px; overflow:hidden; max-width:500px;
+    margin-top:60px;
+  }
+  .stat {
+    background:rgba(255,255,255,0.04); padding:20px 24px;
+    text-align:center;
+  }
+  .stat h3 { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; color:var(--gold); }
+  .stat p { font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    color:rgba(255,255,255,0.35); font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; animation:bounce 2s infinite;
+  }
+  .scroll-hint::after {
+    content:''; display:block; width:1px; height:40px;
+    background:linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding:90px 8%; }
+  .section-label {
+    font-size:11px; color:var(--gold); letter-spacing:3px;
+    text-transform:uppercase; margin-bottom:10px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-label::before {
+    content:''; display:block; width:28px; height:1px; background:var(--gold);
+  }
+  .section-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px);
+    font-weight:700; color:var(--navy); line-height:1.15; margin-bottom:16px;
+  }
+  .section-desc {
+    font-size:15px; color:var(--muted); line-height:1.8; max-width:560px;
+  }
+
+  /* ── FEATURES ── */
+  .features-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px; margin-top:56px;
+  }
+  .feature-card {
+    background:var(--white); border:1px solid #e8e0d0;
+    border-radius:16px; padding:32px; position:relative; overflow:hidden;
+    transition:all 0.3s; cursor:default;
+  }
+  .feature-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+  }
+  .feature-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.08); }
+  .feature-card:hover::before { transform:scaleX(1); }
+  .feature-icon {
+    width:52px; height:52px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; margin-bottom:20px;
+  }
+  .feature-card h3 {
+    font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600;
+    color:var(--navy); margin-bottom:10px;
+  }
+  .feature-card p { font-size:14px; color:var(--muted); line-height:1.7; }
+
+  /* ── ABOUT ── */
+  .about-layout {
+    display:grid; grid-template-columns:1fr 1fr; gap:80px;
+    align-items:center;
+  }
+  .about-visual {
+    position:relative;
+  }
+  .about-card-main {
+    background:linear-gradient(135deg, var(--navy), var(--royal));
+    border-radius:20px; padding:48px; color:var(--white);
+    position:relative; overflow:hidden;
+  }
+  .about-card-main::after {
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:160px; height:160px; border-radius:50%;
+    background:rgba(201,168,76,0.1);
+  }
+  .about-card-main h3 {
+    font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700;
+    color:var(--gold); margin-bottom:16px;
+  }
+  .about-card-main p { font-size:14px; color:rgba(255,255,255,0.8); line-height:1.8; }
+  .about-floating {
+    position:absolute; bottom:-24px; right:-24px;
+    background:var(--white); border-radius:14px;
+    padding:20px 24px; box-shadow:0 16px 40px rgba(0,0,0,0.12);
+    border:1px solid #e8e0d0;
+  }
+  .about-floating h4 {
+    font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:var(--gold);
+  }
+  .about-floating p { font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
+
+  .about-content .values { display:flex; flex-direction:column; gap:20px; margin-top:40px; }
+  .value-item {
+    display:flex; gap:16px; align-items:flex-start;
+    padding:20px; background:var(--white); border-radius:12px;
+    border:1px solid #e8e0d0; transition:all 0.3s;
+  }
+  .value-item:hover { border-color:var(--gold); box-shadow:0 4px 16px rgba(201,168,76,0.1); }
+  .value-num {
+    width:36px; height:36px; border-radius:8px;
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    color:var(--navy); font-weight:700; font-size:14px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .value-item h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .value-item p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+  /* ── GALLERY ── */
+  .gallery-filter {
+    display:flex; gap:8px; flex-wrap:wrap; margin-bottom:36px; margin-top:36px;
+  }
+  .filter-btn {
+    background:var(--white); border:1px solid #e8e0d0;
+    border-radius:100px; padding:8px 20px; font-size:13px;
+    color:var(--muted); cursor:pointer; font-family:'DM Sans',sans-serif;
+    transition:all 0.25s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background:var(--gold); color:var(--navy); border-color:var(--gold); font-weight:600;
+  }
+  .gallery-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+  }
+  .gallery-item {
+    border-radius:12px; overflow:hidden;
+    position:relative; cursor:pointer;
+    aspect-ratio: 4/3;
+    background:linear-gradient(135deg, var(--royal), var(--navy));
+    transition:all 0.3s;
+  }
+  .gallery-item:nth-child(3n+1) { grid-column:span 2; }
+  .gallery-item:nth-child(7n+1) { grid-row:span 2; }
+  .gallery-item-inner {
+    width:100%; height:100%;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    font-size:48px; color:rgba(255,255,255,0.15);
+    position:relative; transition:all 0.4s;
+  }
+  .gallery-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(10,22,40,0.9) 0%, transparent 60%);
+    opacity:0; transition:opacity 0.3s;
+    display:flex; align-items:flex-end; padding:20px;
+  }
+  .gallery-overlay p { color:var(--white); font-size:13px; font-weight:500; }
+  .gallery-item:hover .gallery-overlay { opacity:1; }
+  .gallery-item:hover { transform:scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,0.2); }
+
+  .gi-1 { background:linear-gradient(135deg,#1a3a6b,#0a2040); }
+  .gi-2 { background:linear-gradient(135deg,#2d4a22,#1a2e15); }
+  .gi-3 { background:linear-gradient(135deg,#4a2d1a,#2e1a0f); }
+  .gi-4 { background:linear-gradient(135deg,#1a2d4a,#0f1e30); }
+  .gi-5 { background:linear-gradient(135deg,#2d1a4a,#1e0f30); }
+  .gi-6 { background:linear-gradient(135deg,#1a4a2d,#0f3020); }
+  .gi-7 { background:linear-gradient(135deg,#4a3a1a,#30280f); }
+  .gi-8 { background:linear-gradient(135deg,#1a4a4a,#0f3030); }
+
+  /* ── TEACHERS ── */
+  .teachers-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px; margin-top:56px;
+  }
+  .teacher-card {
+    background:var(--white); border-radius:20px; overflow:hidden;
+    border:1px solid #e8e0d0; transition:all 0.3s; text-align:center;
+  }
+  .teacher-card:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,0.1); }
+  .teacher-avatar {
+    height:160px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:64px;
+  }
+  .teacher-info { padding:20px; }
+  .teacher-info h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--navy); }
+  .teacher-info p { font-size:12px; color:var(--gold); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:4px; }
+  .teacher-info span { font-size:13px; color:var(--muted); margin-top:8px; display:block; }
+
+  /* ── CONTACT ── */
+  .contact-layout {
+    display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:start;
+  }
+  .contact-info { display:flex; flex-direction:column; gap:24px; }
+  .contact-block {
+    background:var(--white); border-radius:14px; padding:24px;
+    border:1px solid #e8e0d0; display:flex; gap:16px; align-items:flex-start;
+    transition:all 0.3s;
+  }
+  .contact-block:hover { border-color:var(--gold); }
+  .contact-icon {
+    width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(135deg, var(--gold), var(--gold-light));
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; flex-shrink:0;
+  }
+  .contact-block h4 { font-size:13px; font-weight:600; color:var(--navy); margin-bottom:4px; letter-spacing:0.5px; text-transform:uppercase; }
+  .contact-block p { font-size:14px; color:var(--muted); line-height:1.6; }
+
+  .contact-form {
+    background:var(--white); border-radius:20px; padding:40px;
+    border:1px solid #e8e0d0;
+  }
+  .contact-form h3 {
+    font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700;
+    color:var(--navy); margin-bottom:28px;
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { margin-bottom:20px; }
+  .form-group label { font-size:12px; font-weight:600; color:var(--navy); letter-spacing:0.5px; text-transform:uppercase; display:block; margin-bottom:8px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; padding:12px 16px; border:1px solid #e8e0d0;
+    border-radius:10px; font-family:'DM Sans',sans-serif; font-size:14px;
+    color:var(--text); background:var(--cream); transition:all 0.25s; outline:none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,0.1);
+    background:var(--white);
+  }
+  .form-group textarea { height:120px; resize:none; }
+
+  /* ── ADMISSIONS ── */
+  .admit-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:48px; }
+  .admit-step {
+    background:var(--white); border-radius:16px; padding:32px;
+    border:1px solid #e8e0d0; position:relative; transition:all 0.3s;
+  }
+  .admit-step:hover { transform:translateY(-4px); box-shadow:0 16px 32px rgba(0,0,0,0.08); }
+  .step-num {
+    font-family:'Cinzel',serif; font-size:56px; font-weight:700;
+    color:rgba(201,168,76,0.15); position:absolute; top:16px; right:24px; line-height:1;
+  }
+  .admit-step h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+  .admit-step p { font-size:14px; color:var(--muted); line-height:1.7; }
+  .admit-step .step-icon { font-size:36px; margin-bottom:16px; }
+
+  .fee-table {
+    width:100%; border-collapse:collapse; margin-top:48px;
+    border-radius:16px; overflow:hidden; border:1px solid #e8e0d0;
+  }
+  .fee-table th {
+    background:linear-gradient(135deg,var(--navy),var(--royal));
+    color:var(--gold); font-family:'Cinzel',serif; font-size:12px;
+    letter-spacing:1px; text-transform:uppercase; padding:16px 20px; text-align:left;
+  }
+  .fee-table td {
+    padding:14px 20px; font-size:14px; color:var(--text);
+    border-bottom:1px solid #e8e0d0;
+  }
+  .fee-table tr:nth-child(even) td { background:var(--cream); }
+  .fee-table tr:hover td { background:rgba(201,168,76,0.05); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--navy); color:var(--white);
+    padding:60px 8% 24px; border-top:1px solid var(--border);
+  }
+  .footer-grid {
+    display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px;
+    margin-bottom:48px;
+  }
+  .footer-brand h3 {
+    font-family:'Cinzel',serif; font-size:18px; font-weight:700;
+    color:var(--gold); margin-bottom:8px;
+  }
+  .footer-brand p { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-top:12px; }
+  .footer-col h4 {
+    font-size:11px; font-weight:600; color:var(--gold);
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:16px;
+  }
+  .footer-col a {
+    display:block; font-size:13px; color:rgba(255,255,255,0.55);
+    text-decoration:none; margin-bottom:8px; cursor:pointer;
+    transition:color 0.2s;
+  }
+  .footer-col a:hover { color:var(--gold-light); }
+  .footer-bottom {
+    border-top:1px solid var(--border); padding-top:24px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; color:rgba(255,255,255,0.3);
+  }
+  .rating-badge {
+    display:flex; align-items:center; gap:8px;
+    background:rgba(201,168,76,0.1); border:1px solid var(--border);
+    border-radius:100px; padding:6px 14px;
+  }
+  .stars { color:var(--gold); font-size:14px; }
+
+  /* ── NOTICES MARQUEE ── */
+  .notice-bar {
+    background:linear-gradient(90deg, var(--navy), var(--royal));
+    padding:10px 0; overflow:hidden; border-top:1px solid var(--border);
+  }
+  .notice-track {
+    display:flex; gap:60px; white-space:nowrap;
+    animation:marquee 30s linear infinite;
+  }
+  .notice-track span { font-size:13px; color:rgba(255,255,255,0.75); }
+  .notice-track span strong { color:var(--gold); margin-right:8px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @keyframes bounce {
+    0%,100% { transform:translateX(-50%) translateY(0); }
+    50% { transform:translateX(-50%) translateY(8px); }
+  }
+  @keyframes marquee {
+    from { transform:translateX(0); }
+    to { transform:translateX(-50%); }
+  }
+
+  /* ── SECTION BG VARIANTS ── */
+  .bg-navy { background:linear-gradient(160deg, var(--navy), var(--royal)); }
+  .bg-navy .section-title { color:var(--white); }
+  .bg-navy .section-label { color:var(--gold-light); }
+  .bg-navy .section-label::before { background:var(--gold-light); }
+  .bg-navy .section-desc { color:rgba(255,255,255,0.6); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    .about-layout, .contact-layout { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .gallery-grid { grid-template-columns:repeat(2,1fr); }
+    .gallery-item:nth-child(3n+1) { grid-column:span 1; }
+    nav { gap:0; }
+    .nav-btn { font-size:11px; padding:6px 8px; }
+  }
+  @media(max-width:600px) {
+    .hero-stats { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr; }
+    .gallery-grid { grid-template-columns:1fr; }
+    .gallery-item:nth-child(3n+1) { grid-column:span 1; }
+    .gallery-item:nth-child(7n+1) { grid-row:span 1; }
+    nav { display:none; }
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position:fixed; bottom:24px; right:24px; z-index:9999;
+    background:var(--navy); color:var(--white);
+    padding:14px 24px; border-radius:10px;
+    border-left:4px solid var(--gold);
+    font-size:14px; box-shadow:0 8px 24px rgba(0,0,0,0.2);
+    opacity:0; transform:translateY(20px); transition:all 0.4s;
+    pointer-events:none;
+  }
+  .toast.show { opacity:1; transform:translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- NOTICE BAR -->
+<div class="notice-bar">
+  <div class="notice-track" id="noticeTrack">
+    <span><strong>📢 Notice:</strong> Admissions Open for 2025-26 Session!</span>
+    <span><strong>🏆 Result:</strong> Class 10 Board Result – 98% Pass Rate!</span>
+    <span><strong>🎉 Event:</strong> Annual Sports Day – April 20, 2025</span>
+    <span><strong>📅 Holiday:</strong> School Closed for Eid – April 10</span>
+    <span><strong>📢 Notice:</strong> Admissions Open for 2025-26 Session!</span>
+    <span><strong>🏆 Result:</strong> Class 10 Board Result – 98% Pass Rate!</span>
+    <span><strong>🎉 Event:</strong> Annual Sports Day – April 20, 2025</span>
+    <span><strong>📅 Holiday:</strong> School Closed for Eid – April 10</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="logo-wrap">
+      <div class="logo-emblem">DPS</div>
+      <div class="logo-text">
+        <h1>Darshan Public School</h1>
+        <p>दर्शन पब्लिक स्कूल · Darbhanga</p>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('home',this)">Home</button>
+      <button class="nav-btn" onclick="showPage('about',this)">About Us</button>
+      <button class="nav-btn" onclick="showPage('gallery',this)">Gallery</button>
+      <button class="nav-btn" onclick="showPage('faculty',this)">Faculty</button>
+      <button class="nav-btn" onclick="showPage('admissions',this)">Admissions</button>
+      <button class="nav-btn" onclick="showPage('contact',this)">Contact</button>
+      <button class="nav-cta" onclick="showPage('admissions',document.querySelectorAll('.nav-btn')[4])">Apply Now</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="dot"></div>
+        <span>Darbhanga, Bihar · Est. 2005</span>
+      </div>
+      <div class="hero-sub">Excellence in Education</div>
+      <h2>Shaping Minds,<br/><em>Building Futures</em></h2>
+      <p>Darshan Public School is committed to providing quality education that nurtures every child's academic, moral, and extracurricular potential in a safe and inspiring environment.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('admissions',document.querySelectorAll('.nav-btn')[4])">Apply for Admission</button>
+        <button class="btn-outline" onclick="showPage('about',document.querySelectorAll('.nav-btn')[1])">Discover More</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <h3>4.9★</h3>
+          <p>Google Rating</p>
+        </div>
+        <div class="stat">
+          <h3>500+</h3>
+          <p>Students</p>
+        </div>
+        <div class="stat">
+          <h3>20+</h3>
+          <p>Expert Faculty</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </div>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">Where Every Child <br/>Finds Their Strength</h2>
+    <p class="section-desc">We combine academic rigor with holistic development to create confident, compassionate, and capable young citizens.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Academic Excellence</h3>
+        <p>Structured curriculum aligned with CBSE standards, ensuring thorough conceptual understanding and strong foundational skills.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏅</div>
+        <h3>Sports & Activities</h3>
+        <p>A wide range of co-curricular activities including sports, arts, music, and cultural programs for all-round development.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👩‍🏫</div>
+        <h3>Caring Faculty</h3>
+        <p>Experienced and dedicated teachers who focus on each child individually, providing personalized guidance and mentorship.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏫</div>
+        <h3>Modern Infrastructure</h3>
+        <p>Clean, organized, and student-friendly campus with modern classrooms, library, and recreational spaces.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Safe Environment</h3>
+        <p>CCTV-monitored premises with a secure and nurturing atmosphere where students feel protected and at home.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Value Education</h3>
+        <p>Strong emphasis on moral values, discipline, and character building alongside academic achievement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-navy" style="border-radius:24px; margin:0 4%; margin-bottom:60px;">
+    <div class="section-label">What Parents Say</div>
+    <h2 class="section-title">Voices of Our Community</h2>
+    <div class="features-grid" style="margin-top:48px;">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:28px;">
+        <div style="color:#e8c97a;font-size:18px;margin-bottom:12px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.8;font-style:italic;">"A great place for quality education. The school truly cares about every student's growth and future."</p>
+        <p style="color:var(--gold);font-size:12px;margin-top:16px;font-weight:600;">— Parent of Class 5 Student</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:28px;">
+        <div style="color:#e8c97a;font-size:18px;margin-bottom:12px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.8;font-style:italic;">"The teachers are caring, supportive, and focus on every child's growth. My child has improved so much!"</p>
+        <p style="color:var(--gold);font-size:12px;margin-top:16px;font-weight:600;">— Parent of Class 3 Student</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:28px;">
+        <div style="color:#e8c97a;font-size:18px;margin-bottom:12px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.8;font-style:italic;">"The school infrastructure is clean, organized, and student-friendly. Very happy with our decision to enroll here."</p>
+        <p style="color:var(--gold);font-size:12px;margin-top:16px;font-weight:600;">— Parent of Class 8 Student</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ ABOUT PAGE ═══════════════ -->
+<div class="page" id="page-about">
+  <section style="padding-top:100px;">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">About Darshan<br/>Public School</h2>
+    <div class="about-layout" style="margin-top:56px;">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <h3>Our Vision</h3>
+          <p>To be a beacon of academic excellence in Darbhanga, Bihar — nurturing students who are not only intellectually strong but also compassionate, disciplined, and socially responsible individuals ready to face the challenges of tomorrow.</p>
+          <br/>
+          <p style="color:rgba(255,255,255,0.6);font-size:13px;">Located in Azamnagar, near Ujjivan Small Finance Bank, Lalbagh — our school is accessible, welcoming, and always open to the community it serves.</p>
+        </div>
+        <div class="about-floating">
+          <h4>4.9 ★</h4>
+          <p>Google Rated</p>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="section-desc">Darshan Public School was founded with a single mission: to provide quality education to the children of Darbhanga in a nurturing, disciplined, and inspiring environment.</p>
+        <div class="values">
+          <div class="value-item">
+            <div class="value-num">01</div>
+            <div>
+              <h4>Academic Discipline</h4>
+              <p>Structured learning that builds strong foundations in all subjects from early grades.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">02</div>
+            <div>
+              <h4>Holistic Development</h4>
+              <p>Encouraging participation in sports, arts, debates, and cultural events alongside academics.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">03</div>
+            <div>
+              <h4>Inclusive Community</h4>
+              <p>A welcoming school culture that respects diversity and fosters a sense of belonging for every student.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">04</div>
+            <div>
+              <h4>Parent Partnership</h4>
+              <p>Regular parent-teacher interactions to keep families informed and involved in their child's journey.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--white); border-radius:24px; margin:0 0 60px; padding:60px 8%;">
+    <div class="section-label">By the Numbers</div>
+    <h2 class="section-title">School at a Glance</h2>
+    <div class="features-grid" style="margin-top:40px;">
+      <div style="text-align:center;padding:32px;background:var(--cream);border-radius:16px;border:1px solid #e8e0d0;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);">500+</div>
+        <p style="font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Enrolled Students</p>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--cream);border-radius:16px;border:1px solid #e8e0d0;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);">20+</div>
+        <p style="font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Expert Teachers</p>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--cream);border-radius:16px;border:1px solid #e8e0d0;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);">98%</div>
+        <p style="font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Pass Rate</p>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--cream);border-radius:16px;border:1px solid #e8e0d0;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);">4.9★</div>
+        <p style="font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Google Rating</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ GALLERY PAGE ═══════════════ -->
+<div class="page" id="page-gallery">
+  <section style="padding-top:100px;">
+    <div class="section-label">Visual Journey</div>
+    <h2 class="section-title">School Gallery</h2>
+    <p class="section-desc">A glimpse into the vibrant life at Darshan Public School — classrooms, events, sports, and celebrations.</p>
+    <div class="gallery-filter">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All</button>
+      <button class="filter-btn" onclick="filterGallery('campus',this)">Campus</button>
+      <button class="filter-btn" onclick="filterGallery('sports',this)">Sports</button>
+      <button class="filter-btn" onclick="filterGallery('events',this)">Events</button>
+      <button class="filter-btn" onclick="filterGallery('classroom',this)">Classroom</button>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item gi-1" data-cat="campus">
+        <div class="gallery-item-inner">🏫</div>
+        <div class="gallery-overlay"><p>Main School Building</p></div>
+      </div>
+      <div class="gallery-item gi-2" data-cat="sports">
+        <div class="gallery-item-inner">🏃</div>
+        <div class="gallery-overlay"><p>Annual Sports Day</p></div>
+      </div>
+      <div class="gallery-item gi-3" data-cat="events">
+        <div class="gallery-item-inner">🎭</div>
+        <div class="gallery-overlay"><p>Cultural Program</p></div>
+      </div>
+      <div class="gallery-item gi-4" data-cat="classroom">
+        <div class="gallery-item-inner">📖</div>
+        <div class="gallery-overlay"><p>Classroom Learning</p></div>
+      </div>
+      <div class="gallery-item gi-5" data-cat="events">
+        <div class="gallery-item-inner">🎉</div>
+        <div class="gallery-overlay"><p>Independence Day Celebration</p></div>
+      </div>
+      <div class="gallery-item gi-6" data-cat="sports">
+        <div class="gallery-item-inner">⚽</div>
+        <div class="gallery-overlay"><p>Football Tournament</p></div>
+      </div>
+      <div class="gallery-item gi-7" data-cat="campus">
+        <div class="gallery-item-inner">🌿</div>
+        <div class="gallery-overlay"><p>School Garden</p></div>
+      </div>
+      <div class="gallery-item gi-8" data-cat="classroom">
+        <div class="gallery-item-inner">🔬</div>
+        <div class="gallery-overlay"><p>Science Lab</p></div>
+      </div>
+      <div class="gallery-item gi-1" data-cat="events">
+        <div class="gallery-item-inner">🎓</div>
+        <div class="gallery-overlay"><p>Prize Distribution</p></div>
+      </div>
+      <div class="gallery-item gi-2" data-cat="campus">
+        <div class="gallery-item-inner">📚</div>
+        <div class="gallery-overlay"><p>School Library</p></div>
+      </div>
+      <div class="gallery-item gi-3" data-cat="sports">
+        <div class="gallery-item-inner">🏏</div>
+        <div class="gallery-overlay"><p>Cricket Matches</p></div>
+      </div>
+      <div class="gallery-item gi-4" data-cat="events">
+        <div class="gallery-item-inner">🕯️</div>
+        <div class="gallery-overlay"><p>Diwali Special Event</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ FACULTY PAGE ═══════════════ -->
+<div class="page" id="page-faculty">
+  <section style="padding-top:100px;">
+    <div class="section-label">Our Team</div>
+    <h2 class="section-title">Meet Our Faculty</h2>
+    <p class="section-desc">Our dedicated teachers are the backbone of Darshan Public School — experienced, passionate, and committed to every child's success.</p>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a3a6b,#0a2040);">👨‍💼</div>
+        <div class="teacher-info">
+          <h3>Mr. Ramesh Kumar</h3>
+          <p>Principal</p>
+          <span>M.Ed, 18 years experience. Visionary leader committed to holistic education.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#2d4a22,#1a2e15);">👩‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mrs. Priya Sharma</h3>
+          <p>Mathematics</p>
+          <span>B.Sc, B.Ed. Makes complex concepts simple and fun for all students.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#4a2d1a,#2e1a0f);">👨‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mr. Sunil Jha</h3>
+          <p>Science</p>
+          <span>M.Sc Physics, B.Ed. Passionate about making science practical and exciting.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a2d4a,#0f1e30);">👩‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mrs. Anjali Singh</h3>
+          <p>Hindi & English</p>
+          <span>M.A. Literature, B.Ed. Nurturing love for language and creative expression.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#2d1a4a,#1e0f30);">👨‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mr. Anil Yadav</h3>
+          <p>Social Science</p>
+          <span>M.A. History, B.Ed. Bringing history and geography alive in the classroom.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a4a2d,#0f3020);">👩‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mrs. Kavita Mishra</h3>
+          <p>Computer Science</p>
+          <span>B.Tech, B.Ed. Preparing students for the digital world with practical skills.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#4a3a1a,#30280f);">👨‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mr. Deepak Thakur</h3>
+          <p>Physical Education</p>
+          <span>B.P.Ed. Champion athlete building discipline, teamwork, and fitness.</span>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a4a4a,#0f3030);">👩‍🏫</div>
+        <div class="teacher-info">
+          <h3>Mrs. Sunita Devi</h3>
+          <p>Art & Craft</p>
+          <span>BFA, B.Ed. Unleashing creativity and artistic talent in every student.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ ADMISSIONS PAGE ═══════════════ -->
+<div class="page" id="page-admissions">
+  <section style="padding-top:100px;">
+    <div class="section-label">Join Our Family</div>
+    <h2 class="section-title">Admission Process<br/>2025–26</h2>
+    <p class="section-desc">We welcome students from Nursery to Class 10. The admission process is simple, transparent, and student-friendly.</p>
+    <div class="admit-grid">
+      <div class="admit-step">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <h3>Fill Application</h3>
+        <p>Collect or download the admission form and fill in all required student and parent details carefully.</p>
+      </div>
+      <div class="admit-step">
+        <div class="step-num">02</div>
+        <div class="step-icon">📁</div>
+        <h3>Submit Documents</h3>
+        <p>Submit required documents: Birth certificate, previous report card, Aadhar card, and 4 passport photos.</p>
+      </div>
+      <div class="admit-step">
+        <div class="step-num">03</div>
+        <div class="step-icon">🗣️</div>
+        <h3>Interaction & Assessment</h3>
+        <p>A friendly interaction session with the child and parents to understand the student's learning needs.</p>
+      </div>
+      <div class="admit-step">
+        <div class="step-num">04</div>
+        <div class="step-icon">✅</div>
+        <h3>Confirmation & Enrollment</h3>
+        <p>Upon acceptance, complete fee payment and receive the welcome kit, books list, and uniform details.</p>
+      </div>
+    </div>
+
+    <table class="fee-table" style="margin-top:60px;">
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Admission Fee</th>
+          <th>Monthly Fee</th>
+          <th>Annual Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Nursery – KG</td><td>₹500</td><td>₹300</td><td>₹3,600</td></tr>
+        <tr><td>Class 1 – 2</td><td>₹600</td><td>₹350</td><td>₹4,200</td></tr>
+        <tr><td>Class 3 – 5</td><td>₹700</td><td>₹400</td><td>₹4,800</td></tr>
+        <tr><td>Class 6 – 8</td><td>₹800</td><td>₹500</td><td>₹6,000</td></tr>
+        <tr><td>Class 9 – 10</td><td>₹1,000</td><td>₹600</td><td>₹7,200</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:12px;">* Fees are indicative. Please contact school office for exact current fee structure.</p>
+
+    <div style="margin-top:60px;background:linear-gradient(135deg,var(--navy),var(--royal));border-radius:20px;padding:48px;text-align:center;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold);margin-bottom:12px;">Ready to Join?</h3>
+      <p style="color:rgba(255,255,255,0.7);margin-bottom:28px;font-size:15px;">Visit us at our school or fill in the enquiry form. We'd love to meet your family!</p>
+      <button class="btn-primary" onclick="showPage('contact',document.querySelectorAll('.nav-btn')[5])">Contact Us Today</button>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ CONTACT PAGE ═══════════════ -->
+<div class="page" id="page-contact">
+  <section style="padding-top:100px;">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-desc">We're always happy to answer your questions and welcome you to our school.</p>
+    <div class="contact-layout" style="margin-top:56px;">
+      <div class="contact-info">
+        <div class="contact-block">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>First Floor, Azamnagar Main Road, Near Ujjivan Small Finance Bank, Lalbagh, Darbhanga, Bihar – 846004</p>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>School Hours</h4>
+            <p>Monday – Saturday<br/>7:30 AM – 2:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>Contact school directly for phone number via Google Maps listing.</p>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Find Us on Google Maps</h4>
+            <p><a href="https://maps.app.goo.gl/WUsLyMLMXYMxYfAP7" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:600;">View on Google Maps →</a></p>
+          </div>
+        </div>
+
+        <!-- Mini Map Placeholder -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--royal));border-radius:16px;padding:32px;text-align:center;border:1px solid var(--border);">
+          <div style="font-size:48px;margin-bottom:12px;">🗺️</div>
+          <p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:16px;">Azamnagar Main Rd, Lalbagh<br/>Darbhanga, Bihar 846004</p>
+          <a href="https://maps.app.goo.gl/WUsLyMLMXYMxYfAP7" target="_blank">
+            <button class="btn-primary">Open in Google Maps</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Parent Name</label>
+            <input type="text" placeholder="Full Name"/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 00000 00000"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Student Name</label>
+            <input type="text" placeholder="Child's Full Name"/>
+          </div>
+          <div class="form-group">
+            <label>Applying for Class</label>
+            <select>
+              <option>Select Class</option>
+              <option>Nursery</option><option>LKG</option><option>UKG</option>
+              <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+              <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+              <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+              <option>Class 10</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Your enquiry or message..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitForm()">
+          Send Message ✉️
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div class="logo-emblem" style="width:40px;height:40px;font-size:16px;">DPS</div>
+        <h3 style="margin:0;">Darshan Public School</h3>
+      </div>
+      <p>Shaping young minds with quality education, discipline, and values in the heart of Darbhanga, Bihar since 2005.</p>
+      <div class="rating-badge" style="margin-top:20px;display:inline-flex;">
+        <span class="stars">★★★★★</span>
+        <span style="font-size:13px;color:var(--gold-light);font-weight:600;">4.9 on Google</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a onclick="showPage('home',document.querySelectorAll('.nav-btn')[0])">Home</a>
+      <a onclick="showPage('about',document.querySelectorAll('.nav-btn')[1])">About Us</a>
+      <a onclick="showPage('gallery',document.querySelectorAll('.nav-btn')[2])">Gallery</a>
+      <a onclick="showPage('faculty',document.querySelectorAll('.nav-btn')[3])">Faculty</a>
+      <a onclick="showPage('admissions',document.querySelectorAll('.nav-btn')[4])">Admissions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Academics</h4>
+      <a>Nursery – UKG</a>
+      <a>Primary (1–5)</a>
+      <a>Middle (6–8)</a>
+      <a>Secondary (9–10)</a>
+      <a>Extra-Curricular</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a>Azamnagar Main Rd</a>
+      <a>Lalbagh, Darbhanga</a>
+      <a>Bihar – 846004</a>
+      <a href="https://maps.app.goo.gl/WUsLyMLMXYMxYfAP7" target="_blank" style="color:var(--gold);">Google Maps →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Darshan Public School, Darbhanga. All rights reserved.</span>
+    <span>दर्शन पब्लिक स्कूल · Excellence in Education</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Message sent successfully! We'll be in touch soon.</div>
+
+<script>
+  function showPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    if (btn) btn.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = 'block';
+        item.style.opacity = '1';
+      } else {
+        item.style.opacity = '0.2';
+      }
+    });
+  }
+
+  function submitForm() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+</script>
+</body>
+</html>
